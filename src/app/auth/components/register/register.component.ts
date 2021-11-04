@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 
 import { registerAction } from "src/app/auth/store/actions";
 import { isSubmittingSelector } from "src/app/auth/store/selectors";
+import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
 
 @Component({
     selector: 'mc-register',
@@ -40,6 +41,6 @@ export class RegisterComponent implements OnInit {
 
     onSubmit(): void {
         console.log('submit', this.form.value, this.form.valid);
-        this.store.dispatch(registerAction(this.form.value))
+        this.store.dispatch(registerAction(this.form.value));
     }
 }
