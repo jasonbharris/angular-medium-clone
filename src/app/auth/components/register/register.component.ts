@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
-import { registerAction } from "src/app/auth/store/actions";
+import { registerAction } from "src/app/auth/store/actions/register.action";
 import { isSubmittingSelector } from "src/app/auth/store/selectors";
 import { CurrentUserInterface } from "../../shared/types/currentUser.interface";
+import { RegisterRequestInterface } from "../../types/registerRequest.interface";
 
 @Component({
     selector: 'mc-register',
@@ -41,6 +42,9 @@ export class RegisterComponent implements OnInit {
 
     onSubmit(): void {
         console.log('submit', this.form.value, this.form.valid);
-        this.store.dispatch(registerAction(this.form.value));
+        const request: RegisterRequestInterface = {
+            user: this.form.value
+        }
+        this.store.dispatch(registerAction({request}));
     }
 }
