@@ -3,6 +3,7 @@ import { ActionTypes } from "src/app/auth/store/actionTypes";
 import { CurrentUserInterface } from "src/app/auth/shared/types/currentUser.interface";
 
 import { RegisterRequestInterface } from "src/app/auth/types/registerRequest.interface";
+import { BackendErrorsInterface } from "src/app/auth/shared/types/backendErrors.interface";
 
 export const registerAction = createAction(
     ActionTypes.REGISTER,
@@ -15,5 +16,6 @@ export const registerSuccessAction = createAction(
 )
 
 export const registerFailureAction = createAction(
-    ActionTypes.REGISTER_FAILURE
+    ActionTypes.REGISTER_FAILURE,
+    props<{errors: BackendErrorsInterface}>()
 )
